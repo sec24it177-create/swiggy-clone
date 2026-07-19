@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwiggyMart | Instant Delivery E-Commerce Store</title>
+  <meta name="description" content="Shop fresh groceries, gourmet munchies, personal care, and smart electronics with instant delivery. Beautiful Swiggy-style rounded cards and offers.">
+  
+  <!-- FontAwesome for Modern Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- --- Header / Navigation --- -->
+  <header>
+    <div class="container nav-container">
+      <div class="nav-left">
+        <a href="#" class="logo-link" id="logo-btn">
+          <div class="logo-icon">S</div>
+          <span>swiggy<span style="color: var(--text-main); font-weight: 500;">mart</span></span>
+        </a>
+        
+        <div class="location-selector" id="location-trigger">
+          <i class="fa-solid fa-location-dot location-icon"></i>
+          <span class="location-badge">Home</span>
+          <span class="location-name">12th Cross, HSR Layout, Sector 4, Bengaluru</span>
+          <i class="fa-solid fa-chevron-down chevron-icon"></i>
+        </div>
+      </div>
+      
+      <div class="search-bar-container">
+        <input type="text" class="search-input" id="search-box" placeholder="Search for items, brands, or categories...">
+        <button class="search-icon-btn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      
+      <div class="nav-right">
+        <button class="nav-item cart-btn" id="cart-drawer-trigger">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span>Cart</span>
+          <span class="cart-badge" id="header-cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- --- Hero Offers Slider Section --- -->
+  <section class="offers-section">
+    <div class="container">
+      <div class="section-title">
+        Best Offers for You
+        <span class="section-subtitle">Swipe for details</span>
+      </div>
+      
+      <div class="offers-slider">
+        <!-- Offer 1 -->
+        <div class="offer-card" onclick="applyCouponDirectly('SWIGGY50')">
+          <div>
+            <div class="offer-discount">50% OFF</div>
+            <div class="offer-desc">Up to ₹100 on your order</div>
+          </div>
+          <div class="offer-code">USE CODE SWIGGY50</div>
+          <div class="offer-graphic">%</div>
+        </div>
+        
+        <!-- Offer 2 -->
+        <div class="offer-card bank-offer" onclick="applyCouponDirectly('STEAL20')">
+          <div>
+            <div class="offer-discount">20% OFF</div>
+            <div class="offer-desc">On orders above ₹499</div>
+          </div>
+          <div class="offer-code">USE CODE STEAL20</div>
+          <div class="offer-graphic"><i class="fa-solid fa-wallet"></i></div>
+        </div>
+        
+        <!-- Offer 3 -->
+        <div class="offer-card grocery-offer" onclick="applyCouponDirectly('FREEDEL')">
+          <div>
+            <div class="offer-discount">FREE DELIVERY</div>
+            <div class="offer-desc">Save ₹39 on shipping fee</div>
+          </div>
+          <div class="offer-code">USE CODE FREEDEL</div>
+          <div class="offer-graphic"><i class="fa-solid fa-truck-fast"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- Category Circle Links Section --- -->
+  <section class="categories-section">
+    <div class="container">
+      <div class="categories-container" id="category-scroller">
+        <!-- All Category -->
+        <div class="category-circle-item active" data-category="All">
+          <div class="category-circle-img-wrap flex-center">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=150&auto=format&fit=crop&q=80" alt="All Products">
+          </div>
+          <span class="category-circle-title">All Products</span>
+        </div>
+        
+        <!-- Category 1 -->
+        <div class="category-circle-item" data-category="Gourmet & Snacks">
+          <div class="category-circle-img-wrap">
+            <img src="https://images.unsplash.com/photo-1504502350688-00f5d59bbdeb?w=150&auto=format&fit=crop&q=80" alt="Gourmet & Snacks">
+          </div>
+          <span class="category-circle-title">Snacks & Sips</span>
+        </div>
+        
+        <!-- Category 2 -->
+        <div class="category-circle-item" data-category="Fresh Produce">
+          <div class="category-circle-img-wrap">
+            <img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=150&auto=format&fit=crop&q=80" alt="Fresh Produce">
+          </div>
+          <span class="category-circle-title">Fresh Fruits</span>
+        </div>
+        
+        <!-- Category 3 -->
+        <div class="category-circle-item" data-category="Smart Electronics">
+          <div class="category-circle-img-wrap">
+            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=150&auto=format&fit=crop&q=80" alt="Smart Electronics">
+          </div>
+          <span class="category-circle-title">Smart Gear</span>
+        </div>
+        
+        <!-- Category 4 -->
+        <div class="category-circle-item" data-category="Daily Personal Care">
+          <div class="category-circle-img-wrap">
+            <img src="https://images.unsplash.com/photo-1617897903246-719242758050?w=150&auto=format&fit=crop&q=80" alt="Daily Personal Care">
+          </div>
+          <span class="category-circle-title">Self Care</span>
+        </div>
+        
+        <!-- Category 5 -->
+        <div class="category-circle-item" data-category="Home & Kitchen">
+          <div class="category-circle-img-wrap">
+            <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=150&auto=format&fit=crop&q=80" alt="Home & Kitchen">
+          </div>
+          <span class="category-circle-title">Home Essentials</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- Sticky Filter & Sort Bar Section --- -->
+  <section class="filters-section">
+    <div class="container filters-container">
+      <div class="filters-left">
+        <!-- Sort Low-High -->
+        <div class="filter-chip" id="filter-sort-low-high">
+          <span>Price: Low to High</span>
+        </div>
+        <!-- Sort High-Low -->
+        <div class="filter-chip" id="filter-sort-high-low">
+          <span>Price: High to Low</span>
+        </div>
+        <!-- Fast Delivery -->
+        <div class="filter-chip" id="filter-fast-delivery">
+          <i class="fa-solid fa-bolt"></i>
+          <span>Fast Delivery (&lt; 15 mins)</span>
+        </div>
+        <!-- Ratings 4.5+ -->
+        <div class="filter-chip" id="filter-ratings">
+          <i class="fa-solid fa-star"></i>
+          <span>Ratings 4.5+</span>
+        </div>
+        <!-- Veg Only -->
+        <div class="filter-chip" id="filter-veg">
+          <span class="badge-veg-nonveg-icon" style="background-color: var(--veg-color); width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 4px;"></span>
+          <span>Veg Products</span>
+        </div>
+        
+        <!-- Clear Filters Link -->
+        <button class="clear-filters-btn" id="clear-filters-btn">
+          Clear Filters <i class="fa-solid fa-circle-xmark"></i>
+        </button>
+      </div>
+      
+      <div class="results-count" id="items-count-display">
+        Showing 25 items
+      </div>
+    </div>
+  </section>
+
+  <!-- --- Catalog / Product List Section --- -->
+  <section class="catalog-section">
+    <div class="container">
+      <div class="products-grid" id="products-catalog">
+        <!-- Cards loaded dynamically via app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- --- Sliding Cart Drawer --- -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay">
+    <div class="cart-drawer" id="cart-drawer">
+      <div class="cart-header">
+        <div class="cart-title">
+          <i class="fa-solid fa-cart-shopping" style="color: var(--primary-color);"></i>
+          Your Basket
+        </div>
+        <button class="close-drawer-btn" id="cart-drawer-close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      
+      <!-- Empty Cart State -->
+      <div class="empty-cart-state" id="empty-cart-view">
+        <i class="fa-solid fa-basket-shopping empty-cart-icon"></i>
+        <div class="empty-cart-title">Your basket is empty</div>
+        <div class="empty-cart-desc">Add delicious snacks or daily items from our catalog to get started.</div>
+      </div>
+      
+      <!-- Cart Items & Coupons (Hidden when empty) -->
+      <div class="cart-body" id="cart-loaded-view" style="display: none;">
+        <!-- Cart Items List -->
+        <div class="cart-item-list" id="cart-items-container">
+          <!-- Filled dynamically -->
+        </div>
+        
+        <!-- Promo / Coupons Section -->
+        <div class="coupon-section">
+          <div class="coupon-list-title">Apply Coupon</div>
+          <div class="coupon-input-group">
+            <input type="text" class="coupon-input" id="coupon-field" placeholder="Enter coupon code...">
+            <button class="apply-coupon-btn" id="coupon-apply-btn">Apply</button>
+          </div>
+          
+          <div id="coupon-applied-container" style="display: none;">
+            <!-- Display applied coupon info -->
+          </div>
+          
+          <div class="coupon-list-title">Available Coupons</div>
+          <div class="coupon-badges">
+            <div class="coupon-item" onclick="applyCouponDirectly('SWIGGY50')">
+              <span class="coupon-item-code">SWIGGY50</span>
+              <span class="coupon-item-desc">50% off up to ₹100</span>
+              <span class="coupon-apply-action">Apply</span>
+            </div>
+            
+            <div class="coupon-item" onclick="applyCouponDirectly('STEAL20')">
+              <span class="coupon-item-code">STEAL20</span>
+              <span class="coupon-item-desc">20% off on orders above ₹499</span>
+              <span class="coupon-apply-action">Apply</span>
+            </div>
+            
+            <div class="coupon-item" onclick="applyCouponDirectly('FREEDEL')">
+              <span class="coupon-item-code">FREEDEL</span>
+              <span class="coupon-item-desc">Free shipping, saves ₹39</span>
+              <span class="coupon-apply-action">Apply</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Checkout Billing Summary Section -->
+      <div class="bill-section" id="cart-billing-view" style="display: none;">
+        <div class="bill-title">Bill Details</div>
+        <div class="bill-row">
+          <span>Item Subtotal</span>
+          <span id="bill-subtotal">₹0</span>
+        </div>
+        <div class="bill-row">
+          <span>Delivery Charge</span>
+          <span id="bill-delivery">₹39</span>
+        </div>
+        <div class="bill-row">
+          <span>Platform Fee</span>
+          <span>₹3</span>
+        </div>
+        <div class="bill-row">
+          <span>Taxes &amp; GST (5%)</span>
+          <span id="bill-tax">₹0</span>
+        </div>
+        <div class="bill-row discount" id="bill-discount-row" style="display: none;">
+          <span>Coupon Discount</span>
+          <span id="bill-discount">-₹0</span>
+        </div>
+        <div class="bill-row total">
+          <span>To Pay</span>
+          <span id="bill-grand-total">₹0</span>
+        </div>
+        
+        <button class="checkout-btn" id="proceed-checkout-btn">
+          Proceed to Pay ₹<span id="checkout-btn-total">0</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- Checkout & Payment & Tracking Modal --- -->
+  <div class="modal-overlay" id="checkout-modal-overlay">
+    <div class="modal-container" id="checkout-modal">
+      <div class="modal-header">
+        <span class="modal-title" id="modal-heading">Select Payment Method</span>
+        <button class="modal-close-btn" id="modal-close-trigger">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      
+      <div class="modal-body" id="modal-body-content">
+        <!-- Step 1: Payment Method List -->
+        <div id="payment-methods-step">
+          <div class="payment-methods">
+            <!-- UPI Option -->
+            <div class="payment-option selected" data-method="upi">
+              <input type="radio" name="pay-method" class="payment-option-radio" checked>
+              <div class="payment-option-details">
+                <div class="payment-option-name">Google Pay / PhonePe / UPI</div>
+                <div class="payment-option-desc">Instant secure checkouts via mobile applications</div>
+              </div>
+              <i class="fa-brands fa-google-pay payment-icon"></i>
+            </div>
+            
+            <!-- Cards Option -->
+            <div class="payment-option" data-method="card">
+              <input type="radio" name="pay-method" class="payment-option-radio">
+              <div class="payment-option-details">
+                <div class="payment-option-name">Credit &amp; Debit Cards</div>
+                <div class="payment-option-desc">Visa, Mastercard, RuPay &amp; Maestro supported</div>
+              </div>
+              <i class="fa-solid fa-credit-card payment-icon"></i>
+            </div>
+            
+            <!-- Cash on Delivery Option -->
+            <div class="payment-option" data-method="cod">
+              <input type="radio" name="pay-method" class="payment-option-radio">
+              <div class="payment-option-details">
+                <div class="payment-option-name">Cash on Delivery</div>
+                <div class="payment-option-desc">Pay cash or scan QR code when your order arrives</div>
+              </div>
+              <i class="fa-solid fa-hand-holding-dollar payment-icon"></i>
+            </div>
+          </div>
+          <button class="pay-action-btn" id="pay-submit-btn">Pay &amp; Confirm Order</button>
+        </div>
+
+        <!-- Step 2: Processing Payment Spinner (Initially Hidden) -->
+        <div id="payment-processing-step" style="display: none;">
+          <div class="processing-container">
+            <div class="spinner"></div>
+            <div class="processing-title">Contacting Bank...</div>
+            <div class="processing-desc">Please do not refresh the page or click back button. Processing payment securely.</div>
+          </div>
+        </div>
+
+        <!-- Step 3: Order Tracking Dashboard Timeline (Initially Hidden) -->
+        <div id="order-tracking-step" style="display: none;">
+          <div class="tracking-container">
+            <div class="tracking-header">
+              <div class="tracking-success-icon">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <h3 style="font-family: var(--font-title); font-weight: 800; font-size: 20px;">Payment Successful!</h3>
+              <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Thank you for shopping with SwiggyMart.</p>
+              <div class="tracking-id" id="tracking-order-id">Order #SM-389104</div>
+            </div>
+            
+            <div class="timeline">
+              <!-- Filled Line Animation background -->
+              <div class="timeline-line-filled" id="timeline-progress-bar"></div>
+              
+              <!-- Timeline Step 1 -->
+              <div class="timeline-item" id="track-step-1">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-title">Order Confirmed</div>
+                  <div class="timeline-desc">Store has received your order and is verifying payment.</div>
+                  <span class="timeline-time" id="track-time-1">Just now</span>
+                </div>
+              </div>
+              
+              <!-- Timeline Step 2 -->
+              <div class="timeline-item" id="track-step-2">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-title">Store Preparing Items</div>
+                  <div class="timeline-desc">Items are being picked and packed in a sanitised bag.</div>
+                  <span class="timeline-time" id="track-time-2">Waiting...</span>
+                </div>
+              </div>
+              
+              <!-- Timeline Step 3 -->
+              <div class="timeline-item" id="track-step-3">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-title">Delivery Partner Assigned</div>
+                  <div class="timeline-desc">Rohan Kumar is navigating towards the store to pick up.</div>
+                  <span class="timeline-time" id="track-time-3">Waiting...</span>
+                </div>
+              </div>
+              
+              <!-- Timeline Step 4 -->
+              <div class="timeline-item" id="track-step-4">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-title">Out for Delivery</div>
+                  <div class="timeline-desc">Partner is heading towards your location. Arriving shortly.</div>
+                  <span class="timeline-time" id="track-time-4">Waiting...</span>
+                </div>
+              </div>
+            </div>
+            
+            <button class="close-tracking-btn" id="finish-checkout-btn">Track Order on Map</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- JS Scripts --- -->
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
